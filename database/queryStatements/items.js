@@ -1,6 +1,26 @@
 
 exports.TEST = 'SELECT * FROM company';
 
+exports.CREATE_TEMP_COMPANY =
+	'INSERT INTO COMPANY (id, name) VALUES ($1, $2) ON CONFLICT (id) DO NOTHING;';
+
+exports.CREATE_UPDATE_COMPANY =
+	'INSERT INTO COMPANY VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) ' +
+	'ON CONFLICT (id) DO UPDATE SET ' +
+	'crunchbase_url = $3, ' +
+	'homepage_url = $4, ' + 
+	'category_code = $5, ' +
+	'number_of_employees = $6, ' + 
+	'founded_year = $7, ' +
+	'founded_month = $8, ' +
+	'founded_day = $9, ' +
+	'deadpooled_year = $10, ' +
+	'deadpooled_month = $11, ' +
+	'deadpooled_day = $12, ' +
+	'email_address = $13, ' +
+	'phone_number = $14, ' +
+	'overview = $15 ' +
+	';';
 /*
 SELECT c.name 
 FROM company c, funding_round fr

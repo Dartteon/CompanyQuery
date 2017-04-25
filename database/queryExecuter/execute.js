@@ -30,3 +30,18 @@ function executeAndLog(query, args) {
     });
     return promise;
 }
+
+exports.createUpdateCompany = function (
+    id, name, crunchbaseUrl, homepageUrl, categoryCode, numEmployees, foundedYear, foundedMonth, foundedDay,
+    deadpooledYear, deadpooledMonth, deadpooledDay, emailAddress, phoneNumber, overview) {
+        console.log("INTEGER? " + foundedYear + foundedMonth + foundedDay);
+        console.log("INTEGER? " + deadpooledYear + deadpooledMonth + deadpooledDay);
+        return executeAndLog(
+            queryStatements.CREATE_TEMP_COMPANY, 
+            [
+                id, name
+                // , crunchbaseUrl, homepageUrl, categoryCode, numEmployees, foundedYear, foundedMonth, foundedDay,
+                // deadpooledYear, deadpooledMonth, deadpooledDay, emailAddress, phoneNumber, overview
+            ]
+        );
+}

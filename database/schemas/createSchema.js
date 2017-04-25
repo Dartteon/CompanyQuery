@@ -12,12 +12,12 @@ const createCompanyQuery =
         'homepage_url VARCHAR(2083), ' +
         'category_code VARCHAR(32), ' +
         'number_of_employees INTEGER, ' +
-        'founded_year INTEGER, ' +
-        'founded_month INTEGER, ' +
-        'founded_day INTEGER, ' +
-        'deadpooled_year INTEGER, ' +
-        'deadpooled_month INTEGER, ' +
-        'deadpooled_day INTEGER, ' +
+        'founded_year INTEGER DEFAULT 0, ' +
+        'founded_month INTEGER DEFAULT 0, ' +
+        'founded_day INTEGER DEFAULT 0, ' +
+        'deadpooled_year INTEGER DEFAULT 0, ' +
+        'deadpooled_month INTEGER DEFAULT 0, ' +
+        'deadpooled_day INTEGER DEFAULT 0, ' +
         'email_address VARCHAR(60), ' + 
         'phone_number VARCHAR(32), ' +
         'overview VARCHAR(2048)' +

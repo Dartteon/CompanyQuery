@@ -6,8 +6,8 @@ const dbutils = require('../dbutils');
 
 const createCompanyQuery = 
     'CREATE TABLE company (' +
-        'id VARCHAR(32) PRIMARY KEY, ' +
-        'name VARCHAR(32), ' +
+        'id VARCHAR(64) PRIMARY KEY, ' +
+        'name VARCHAR(64), ' +
         'crunchbase_url VARCHAR(2083), ' +
         'homepage_url VARCHAR(2083), ' +
         'category_code VARCHAR(32), ' +
@@ -20,7 +20,7 @@ const createCompanyQuery =
         'deadpooled_day INTEGER DEFAULT 0, ' +
         'email_address VARCHAR(60), ' + 
         'phone_number VARCHAR(32), ' +
-        'overview VARCHAR(2048)' +
+        'overview VARCHAR(4096)' +
     ');' ;
 
 //13. tag_list
@@ -37,14 +37,15 @@ const createPersonQuery =
 
 const fundingRoundQuery = 
     'CREATE TABLE funding_round (' +
-        'id INTEGER PRIMARY KEY, ' +
+        'id INTEGER, ' +
         'cid VARCHAR(32), ' +
-        'round_code VARCHAR(1), ' +
+        'round_code VARCHAR(12), ' +
         'raised_amount INTEGER, ' +
         'raised_currency_code VARCHAR(4), ' +
         'funded_year INTEGER, ' +
         'funded_month INTEGER, ' +
         'funded_day INTEGER, ' +
+        'PRIMARY KEY (id), ' +
         'FOREIGN KEY (cid) REFERENCES company(id)' +
         //Need investments or not?
     ');' ;

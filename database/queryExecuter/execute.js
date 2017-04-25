@@ -31,17 +31,48 @@ function executeAndLog(query, args) {
     return promise;
 }
 
+exports.createTempCompany = function (id, name) {
+    return executeAndLog(
+        queryStatements.CREATE_TEMP_COMPANY, 
+        [
+            id, name
+        ]
+    );
+}
 exports.createUpdateCompany = function (
     id, name, crunchbaseUrl, homepageUrl, categoryCode, numEmployees, foundedYear, foundedMonth, foundedDay,
     deadpooledYear, deadpooledMonth, deadpooledDay, emailAddress, phoneNumber, overview) {
-        console.log("INTEGER? " + foundedYear + foundedMonth + foundedDay);
-        console.log("INTEGER? " + deadpooledYear + deadpooledMonth + deadpooledDay);
         return executeAndLog(
-            queryStatements.CREATE_TEMP_COMPANY, 
+            queryStatements.CREATE_UPDATE_COMPANY, 
             [
-                id, name
-                // , crunchbaseUrl, homepageUrl, categoryCode, numEmployees, foundedYear, foundedMonth, foundedDay,
-                // deadpooledYear, deadpooledMonth, deadpooledDay, emailAddress, phoneNumber, overview
+                id, name, crunchbaseUrl, homepageUrl, categoryCode, numEmployees, foundedYear, foundedMonth, foundedDay,
+                deadpooledYear, deadpooledMonth, deadpooledDay, emailAddress, phoneNumber, overview
             ]
         );
+}
+
+exports.createCompetitor = function (cid1, cid2) {
+    return executeAndLog(
+        queryStatements.CREATE_COMPETITOR, 
+        [
+            cid1, cid2
+        ]
+    );
+}
+
+exports.createFundingRound = function (fundingRoundId, fundingRoundCid, fundingRoundCode, fundingRoundAmount
+    , fundingRoundCurrency, fundingRoundYear, fundingRoundMonth, fundingRoundDay) {
+    return executeAndLog(
+        queryStatements.CREATE_FUNDING_ROUND, 
+        [
+            fundingRoundId, fundingRoundCid, fundingRoundCode, fundingRoundAmount,
+            fundingRoundCurrency, fundingRoundYear, fundingRoundMonth, fundingRoundDay
+        ]
+    );
+}
+
+exports.getCompaniesWithConstraints = function(numFundingRounds, yearGreaterThan, amountRaisedGreaterThan) {
+    return executeAndLog(queryStatements.GET_COMPANIES_WITH_CONSTRAINTS,
+        [numFundingRounds, yearGreaterThan, amountRaisedGreaterThan]
+    );
 }
